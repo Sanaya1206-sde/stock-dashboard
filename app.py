@@ -37,6 +37,45 @@ plot_t  = "plotly_dark" if dark else "plotly_white"
 
 st.markdown(f"""
 <style>
+  /* Fix tab visibility */
+  .stTabs [data-baseweb="tab-list"] {{
+    background: {'#1e293b' if dark else '#f1f5f9'};
+    border-radius: 12px;
+    padding: 4px;
+    gap: 4px;
+    border-bottom: none !important;
+  }}
+  .stTabs [data-baseweb="tab"] {{
+    background: transparent;
+    color: {muted};
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-weight: 500;
+    border: none !important;
+  }}
+  .stTabs [aria-selected="true"] {{
+    background: {'#334155' if dark else '#ffffff'} !important;
+    color: {text} !important;
+    font-weight: 700 !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }}
+  .stTabs [data-baseweb="tab-highlight"] {{
+    display: none !important;
+  }}
+  .stTabs [data-baseweb="tab-border"] {{
+    display: none !important;
+  }}
+  /* Fix metric colors */
+  [data-testid="stMetricValue"] {{
+    color: {text} !important;
+  }}
+  [data-testid="stMetricDelta"] {{
+    font-weight: 600;
+  }}
+  /* Remove white lines/borders */
+  hr {{
+    border-color: {'#334155' if dark else '#e2e8f0'} !important;
+  }}
   .stApp {{ background:{bg}; color:{text}; }}
   .block-container {{ padding-top:1.5rem; }}
   .metric-box {{
@@ -64,6 +103,11 @@ st.markdown(f"""
   .pill-gray  {{ background:#f1f5f9; color:#475569; }}
   div[data-testid="stSidebar"] {{
     background:{'#0f172a' if dark else '#f1f5f9'};
+  }}
+  /* Hide default streamlit header white bar */
+  header[data-testid="stHeader"] {{
+    background: {bg} !important;
+    border-bottom: none !important;
   }}
 </style>
 """, unsafe_allow_html=True)
