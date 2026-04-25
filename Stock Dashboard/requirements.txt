@@ -4,5 +4,4 @@ pandas
 numpy
 plotly
 scikit-learn
-tensorflow
-prophet
+requests
